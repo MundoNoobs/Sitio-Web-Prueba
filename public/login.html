@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login - Zofri</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script defer src="/js/auth.js"></script>
+</head>
+<body>
+  <main class="auth">
+    <h1>Iniciar sesión</h1>
+    <div class="tabs">
+      <button id="tabUser">Usuario</button>
+      <button id="tabVendor">Vendedor</button>
+    </div>
+
+    <form id="userLogin" class="auth-form">
+      <input id="userEmail" placeholder="Correo" />
+      <input id="userPassword" type="password" placeholder="Contraseña" />
+      <button type="button" id="loginUserBtn">Entrar como Usuario</button>
+      <p>¿No tienes cuenta? <a href="/register.html">Registrarse</a></p>
+    </form>
+
+    <form id="vendorLogin" class="auth-form" style="display:none;">
+      <input id="vendorId" placeholder="ID vendedor" />
+      <input id="vendorEmail" placeholder="Correo" />
+      <input id="vendorPassword" type="password" placeholder="Contraseña" />
+      <button type="button" id="loginVendorBtn">Entrar como Vendedor</button>
+    </form>
+  </main>
+</body>
+</html>

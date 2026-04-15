@@ -1,0 +1,14 @@
+2026-04-14T23:27:06.185Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-14T23:27:06.289Z - found - id:69de74747a8979d70733c9ec localId:1
+2026-04-14T23:30:04.780Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-14T23:30:04.892Z - found - id:69de74747a8979d70733c9ec localId:1
+2026-04-14T23:30:05.401Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-14T23:30:05.497Z - found - id:69de74747a8979d70733c9ec localId:1
+2026-04-14T23:33:10.708Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-14T23:33:10.799Z - found - id:69de74747a8979d70733c9ec localId:1
+2026-04-14T23:43:27.400Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-14T23:43:27.505Z - found - id:69de74747a8979d70733c9ec localId:1
+2026-04-14T23:45:14.484Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-14T23:45:14.565Z - found - id:69de74747a8979d70733c9ec localId:1
+2026-04-15T00:02:30.453Z - attempt - {"localId":1,"email":"vendor1@zofri.com","passwordPresent":true}
+2026-04-15T00:02:30.566Z - found - id:69de74747a8979d70733c9ec localId:1

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Perfil - Zofri</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <script defer src="/js/app.js"></script>
+  <script defer src="/js/auth.js"></script>
+  <script defer src="/js/profile.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="left"><a href="/">Zofri</a></div>
+    <div class="center"></div>
+    <div class="right"><a id="userMenu" href="/login.html">Iniciar sesión</a></div>
+  </header>
+
+  <main class="profile">
+    <h1>Mi Perfil</h1>
+    <section id="profileInfo">
+      <p>Cargando...</p>
+    </section>
+    <section>
+      <button id="logoutBtnLocal">Cerrar sesión</button>
+    </section>
+    <section id="cartSection">
+      <h2>Mi Carrito</h2>
+      <div id="cartItems">Cargando...</div>
+      <button id="checkoutBtn">Simular compra (checkout)</button>
+    </section>
+    <section id="ordersSection">
+      <h2>Pedidos en proceso</h2>
+      <div id="ordersList">Cargando...</div>
+    </section>
+  </main>
+</body>
+</html>
