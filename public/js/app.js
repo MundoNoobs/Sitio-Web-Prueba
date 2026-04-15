@@ -18,7 +18,7 @@ async function loadStores(){
   const stores = await fetchJSON('/api/stores');
   const el = document.getElementById('stores');
   if(!el) return;
-  el.innerHTML = stores.map(s=>`<div class="store card"><img src="${s.iconUrl||'/css/placeholder.png'}"><div>${s.name}</div><a href="/store.html?localId=${s.localId}">Ir</a></div>`).join('');
+  el.innerHTML = stores.map(s=>`<div class="store card"><img src="${s.iconUrl||'/css/placeholder.png'}" alt="${s.name}"><div>${s.name}</div><a href="/store.html?localId=${s.localId}">Ir</a></div>`).join('');
 }
 
 // product detail and store pages
@@ -29,7 +29,10 @@ async function loadProductDetail(){
   const data = await fetchJSON(`/api/products/${id}`);
   const pd = document.getElementById('productDetail');
   const ps = document.getElementById('productStores');
-  if(pd) pd.innerHTML = `<h1>${data.product.name}</h1><img src="${data.product.photoUrl||''}" style="max-width:240px"><p>$${data.product.price}</p><p><label>Cantidad: <input id="addQty" type="number" min="1" value="1" style="width:64px"></label> <button id="addToCartBtn">Añadir al carrito</button></p>`;
+  // set title element and product details (avoid duplicate top-level headings)
+  const titleEl = document.getElementById('productTitle');
+  if(titleEl) titleEl.textContent = data.product.name;
+  if(pd) pd.innerHTML = `<img src="${data.product.photoUrl||''}" alt="${data.product.name}" style="max-width:240px"><p>$${data.product.price}</p><p><label>Cantidad: <input id="addQty" type="number" min="1" value="1" style="width:64px"></label> <button id="addToCartBtn">Añadir al carrito</button></p>`;
   if(ps) ps.innerHTML = data.others.map(o=>`<div class="card"><h4>${o.name}</h4><p>${o.storeName || 'Tienda'} - $${o.price} <a href="/store.html?localId=${o.storeLocalId}">Ir</a></p></div>`).join('');
   // add to cart handler
   const addBtn = document.getElementById('addToCartBtn');
@@ -55,7 +58,9 @@ async function loadStorePage(){
   const data = await fetchJSON(`/api/stores/${id}`);
   const si = document.getElementById('storeInfo');
   const sp = document.getElementById('storeProducts');
-  if(si) si.innerHTML = `<h1>${data.store.name}</h1>`;
+  const storeTitleEl = document.getElementById('storeTitle');
+  if(storeTitleEl) storeTitleEl.textContent = data.store.name;
+  if(si) si.innerHTML = `<img src="${data.store.iconUrl||'/css/placeholder.png'}" alt="${data.store.name}" style="max-width:160px"><p>${data.store.description||''}</p>`;
   if(sp) sp.innerHTML = data.products.map(cardHTML).join('');
 }
 

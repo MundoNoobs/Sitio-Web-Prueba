@@ -5,33 +5,41 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Panel Vendedor - Zofri</title>
   <link rel="stylesheet" href="/css/styles.css" />
+  <script defer src="/js/accessibility.js"></script>
   <script defer src="/js/app.js"></script>
   <script defer src="/js/vendor.js"></script>
   <script defer src="/js/auth.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#maincontent">Saltar al contenido</a>
   <header class="topbar">
     <div class="left"><a href="/">Zofri</a></div>
     <div class="center"></div>
-    <div class="right"><a id="userMenu" href="/login.html">Cerrar sesión</a></div>
+    <div class="right"><a id="userMenu" href="/login.html">Cerrar sesión</a>
+      <div class="font-controls" role="group" aria-label="Controles de tamaño de fuente">
+        <button id="decreaseFont" aria-label="Disminuir tamaño de letra">A-</button>
+        <button id="resetFont" aria-label="Tamaño normal">A</button>
+        <button id="increaseFont" aria-label="Aumentar tamaño de letra">A+</button>
+      </div>
+    </div>
   </header>
-  <main class="vendor-panel">
+  <main id="maincontent" class="vendor-panel">
     <h1>Mi Tienda</h1>
     <section>
       <h2>Configuración de la tienda</h2>
-      <label>Nombre tienda</label>
-      <input id="storeName" placeholder="Nombre tienda" />
-      <label>Descripción</label>
-      <textarea id="storeDescription" placeholder="Descripción de la tienda"></textarea>
-      <label>URL foto</label>
-      <input id="storePhoto" placeholder="URL imagen" />
+      <label for="storeName">Nombre tienda</label>
+      <input id="storeName" placeholder="Nombre tienda" aria-label="Nombre tienda" />
+      <label for="storeDescription">Descripción</label>
+      <textarea id="storeDescription" placeholder="Descripción de la tienda" aria-label="Descripción de la tienda"></textarea>
+      <label for="storePhoto">URL foto</label>
+      <input id="storePhoto" placeholder="URL imagen" aria-label="URL foto" />
       <button id="saveStoreBtn">Guardar tienda</button>
     </section>
     <section>
       <h2>Añadir Artículo</h2>
-      <input id="addPhoto" placeholder="URL foto" />
-      <input id="addName" placeholder="Nombre artículo" />
-      <input id="addPrice" placeholder="Precio" />
+      <input id="addPhoto" placeholder="URL foto" aria-label="URL foto" />
+      <input id="addName" placeholder="Nombre artículo" aria-label="Nombre artículo" />
+      <input id="addPrice" placeholder="Precio" aria-label="Precio" />
       <button id="addProductBtn">Añadir</button>
     </section>
 

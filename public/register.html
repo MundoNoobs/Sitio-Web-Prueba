@@ -5,18 +5,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Registro - Zofri</title>
   <link rel="stylesheet" href="/css/styles.css" />
+  <script defer src="/js/accessibility.js"></script>
   <script defer src="/js/auth.js"></script>
 </head>
 <body>
-  <main class="auth">
+  <a class="skip-link" href="#maincontent">Saltar al contenido</a>
+  <header class="topbar">
+    <div class="left"><a href="/">Zofri</a></div>
+    <div class="right">
+      <div class="font-controls" role="group" aria-label="Controles de tamaño de fuente">
+        <button id="decreaseFont" aria-label="Disminuir tamaño de letra">A-</button>
+        <button id="resetFont" aria-label="Tamaño normal">A</button>
+        <button id="increaseFont" aria-label="Aumentar tamaño de letra">A+</button>
+      </div>
+    </div>
+  </header>
+  <main id="maincontent" class="auth">
     <h1>Registro Usuario</h1>
     <form id="registerForm">
-      <input id="firstName" placeholder="Nombre" />
-      <input id="lastName" placeholder="Apellido" />
-      <input id="rut" placeholder="RUT (ej: 12.345.678-K)" />
-      <input id="address" placeholder="Dirección" />
-      <input id="email" placeholder="Correo" />
-      <input id="password" type="password" placeholder="Contraseña" />
+      <input id="firstName" placeholder="Nombre" aria-label="Nombre" />
+      <input id="lastName" placeholder="Apellido" aria-label="Apellido" />
+      <input id="rut" placeholder="RUT (ej: 12.345.678-K)" aria-label="RUT" />
+      <input id="address" placeholder="Dirección" aria-label="Dirección" />
+      <input id="email" placeholder="Correo" aria-label="Correo electrónico" />
+      <input id="password" type="password" placeholder="Contraseña" aria-label="Contraseña" />
       <button type="button" id="registerBtn">Registrarse</button>
     </form>
   </main>

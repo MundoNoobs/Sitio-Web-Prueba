@@ -5,10 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Login - Zofri</title>
   <link rel="stylesheet" href="/css/styles.css" />
+  <script defer src="/js/accessibility.js"></script>
   <script defer src="/js/auth.js"></script>
 </head>
 <body>
-  <main class="auth">
+  <a class="skip-link" href="#maincontent">Saltar al contenido</a>
+  <header class="topbar">
+    <div class="left"><a href="/">Zofri</a></div>
+    <div class="right">
+      <div class="font-controls" role="group" aria-label="Controles de tamaño de fuente">
+        <button id="decreaseFont" aria-label="Disminuir tamaño de letra">A-</button>
+        <button id="resetFont" aria-label="Tamaño normal">A</button>
+        <button id="increaseFont" aria-label="Aumentar tamaño de letra">A+</button>
+      </div>
+    </div>
+  </header>
+  <main id="maincontent" class="auth">
     <h1>Iniciar sesión</h1>
     <div class="tabs">
       <button id="tabUser">Usuario</button>
@@ -16,16 +28,16 @@
     </div>
 
     <form id="userLogin" class="auth-form">
-      <input id="userEmail" placeholder="Correo" />
-      <input id="userPassword" type="password" placeholder="Contraseña" />
+      <input id="userEmail" placeholder="Correo" aria-label="Correo electrónico" />
+      <input id="userPassword" type="password" placeholder="Contraseña" aria-label="Contraseña" />
       <button type="button" id="loginUserBtn">Entrar como Usuario</button>
       <p>¿No tienes cuenta? <a href="/register.html">Registrarse</a></p>
     </form>
 
     <form id="vendorLogin" class="auth-form" style="display:none;">
-      <input id="vendorId" placeholder="ID vendedor" />
-      <input id="vendorEmail" placeholder="Correo" />
-      <input id="vendorPassword" type="password" placeholder="Contraseña" />
+      <input id="vendorId" placeholder="ID vendedor" aria-label="ID vendedor" />
+      <input id="vendorEmail" placeholder="Correo" aria-label="Correo vendedor" />
+      <input id="vendorPassword" type="password" placeholder="Contraseña" aria-label="Contraseña vendedor" />
       <button type="button" id="loginVendorBtn">Entrar como Vendedor</button>
     </form>
   </main>
