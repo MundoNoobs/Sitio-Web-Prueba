@@ -4,7 +4,9 @@ async function fetchJSON(url, opts){
 }
 
 function cardHTML(p){
-  return `<div class="card"><img src="${p.photoUrl||'/css/placeholder.png'}" alt="${p.name}"><h4>${p.name}</h4><p>$${p.price}</p><a href="/product.html?id=${p._id}">Ver</a></div>`;
+  const price = Number(p.price) || 0;
+  const fmt = (window.zofriAccessibility && typeof window.zofriAccessibility.formatCurrency === 'function') ? window.zofriAccessibility.formatCurrency(price) : ('$' + Math.round(price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+  return `<div class="card"><img src="${p.photoUrl||'/css/placeholder.png'}" alt="${p.name}"><h4>${p.name}</h4><p>${fmt}</p><a href="/product.html?id=${p._id}">Ver</a></div>`;
 }
 
 async function loadProducts(q=''){
@@ -32,8 +34,12 @@ async function loadProductDetail(){
   // set title element and product details (avoid duplicate top-level headings)
   const titleEl = document.getElementById('productTitle');
   if(titleEl) titleEl.textContent = data.product.name;
-  if(pd) pd.innerHTML = `<img src="${data.product.photoUrl||''}" alt="${data.product.name}" style="max-width:240px"><p>$${data.product.price}</p><p><label>Cantidad: <input id="addQty" type="number" min="1" value="1" style="width:64px"></label> <button id="addToCartBtn">Añadir al carrito</button></p>`;
-  if(ps) ps.innerHTML = data.others.map(o=>`<div class="card"><h4>${o.name}</h4><p>${o.storeName || 'Tienda'} - $${o.price} <a href="/store.html?localId=${o.storeLocalId}">Ir</a></p></div>`).join('');
+  if(pd) {
+    const pprice = Number(data.product.price) || 0;
+    const pfmt = (window.zofriAccessibility && typeof window.zofriAccessibility.formatCurrency === 'function') ? window.zofriAccessibility.formatCurrency(pprice) : ('$' + Math.round(pprice).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'));
+    pd.innerHTML = `<img src="${data.product.photoUrl||''}" alt="${data.product.name}" style="max-width:240px"><p>${pfmt}</p><p><label>Cantidad: <input id="addQty" type="number" min="1" value="1" style="width:64px"></label> <button id="addToCartBtn">Añadir al carrito</button></p>`;
+  }
+  if(ps) ps.innerHTML = data.others.map(o=>{ const op = Number(o.price)||0; const ofmt = (window.zofriAccessibility && typeof window.zofriAccessibility.formatCurrency === 'function') ? window.zofriAccessibility.formatCurrency(op) : ('$' + Math.round(op).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')); return `<div class="card"><h4>${o.name}</h4><p>${o.storeName || 'Tienda'} - ${ofmt} <a href="/store.html?localId=${o.storeLocalId}">Ir</a></p></div>` }).join('');
   // add to cart handler
   const addBtn = document.getElementById('addToCartBtn');
   if(addBtn){

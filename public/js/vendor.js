@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   const load = async ()=>{
     const products = await fetchJSON(`/api/vendors/${localId}/products`);
-    if(productsEl) productsEl.innerHTML = products.map(p=>`<div class="card"><img src="${p.photoUrl||''}" alt="${p.name}" style="height:120px"><h4>${p.name}</h4><p>$${p.price}</p><button data-id="${p._id}" class="edit" aria-label="Editar ${p.name}">Editar</button><button data-id="${p._id}" class="del" aria-label="Eliminar ${p.name}">Eliminar</button></div>`).join('');
+    if(productsEl) productsEl.innerHTML = products.map(p=>{
+      const price = Number(p.price)||0;
+      const pf = (window.zofriAccessibility && typeof window.zofriAccessibility.formatCurrency==='function') ? window.zofriAccessibility.formatCurrency(price) : ('$'+Math.round(price).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'));
+      return `<div class="card"><img src="${p.photoUrl||''}" alt="${p.name}" style="height:120px"><h4>${p.name}</h4><p>${pf}</p><button data-id="${p._id}" class="edit" aria-label="Editar ${p.name}">Editar</button><button data-id="${p._id}" class="del" aria-label="Eliminar ${p.name}">Eliminar</button></div>`;
+    }).join('');
     document.querySelectorAll('.del').forEach(b=>b.onclick=async e=>{ const id=e.target.dataset.id; await fetchJSON(`/api/vendors/${localId}/products/${id}`,{ method:'DELETE' }); load(); });
     document.querySelectorAll('.edit').forEach(b=>b.onclick=async e=>{
       const id = e.target.dataset.id;

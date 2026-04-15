@@ -55,15 +55,17 @@ router.post('/checkout', async (req, res) => {
     if (!user.cart || user.cart.length === 0) return res.status(400).json({ msg: 'Carrito vacío' });
     const buyerAddress = address || user.address || '';
     const created = [];
+    let totalAmount = 0;
     for (const item of user.cart) {
       const saleId = 'VENTA-' + Date.now() + '-' + Math.floor(Math.random()*1000);
       const sale = new Sale({ saleId, productName: item.name, price: item.price, quantity: item.quantity, buyer: user._id, buyerEmail: user.email, address: buyerAddress, storeLocalId: item.storeLocalId, status: 'En proceso' });
       await sale.save();
       created.push(sale);
+      totalAmount += (Number(item.price) || 0) * (Number(item.quantity) || 0);
     }
     user.cart = [];
     await user.save();
-    res.json({ msg: 'Compra simulada', sales: created });
+    res.json({ msg: 'Compra simulada', sales: created, total: totalAmount });
   } catch (err) { console.error(err); res.status(500).json({ msg: 'Error servidor' }); }
 });
 

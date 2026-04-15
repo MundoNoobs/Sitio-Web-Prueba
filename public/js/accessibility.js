@@ -26,4 +26,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 // Expose API
-window.zofriAccessibility = { applyFontSize, FontSizes };
+function formatCurrency(amount){
+  if (amount == null || isNaN(Number(amount))) return '$0';
+  const n = Math.round(Number(amount));
+  return '$' + n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+// Expose API
+window.zofriAccessibility = { applyFontSize, FontSizes, formatCurrency };

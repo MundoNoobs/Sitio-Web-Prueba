@@ -40,3 +40,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media (max-width:600px){
   .center input{width:140px}
 }
+
+/* Cart styles */
+.cart-item{padding:8px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+.cart-item .item-price,.cart-item .item-total{font-weight:700;margin:0 6px}
+.cart-total{margin:10px 0;font-size:1.1rem;font-weight:800}
